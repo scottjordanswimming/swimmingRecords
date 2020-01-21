@@ -1,0 +1,1 @@
+Record.destroy_all

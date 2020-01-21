@@ -1,0 +1,6 @@
+<h1>Records</h1>
+<a href="/records/new">Create a Record</a>
+<% @records.each do |record| %>
+<h2><a href="/records/<%= record.id%>"><%= record.swimmer %></a> </h2>
+<p><%= record.time %></p>
+<% end %>
