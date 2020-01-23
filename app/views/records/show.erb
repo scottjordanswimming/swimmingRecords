@@ -1,0 +1,8 @@
+<h1><%= @record.swimmer %></h1>
+<h2><%= @record.time %></h2>
+<form action="/records/<%= @record.id %>" method="post">
+  <input type="hidden" name"_time" value="delete">
+  <%= if @record.user == current_user %>
+  <button type="submit">Delete Record</button>
+  <% end %>
+</form>
