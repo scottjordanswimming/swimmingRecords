@@ -1,8 +1,17 @@
-<h1><%= @record.swimmer %></h1>
-<h2><%= @record.time %></h2>
+<h1>Swimmer:<%= @record.swimmer %></h1>
+<h2>Event:<%= @record.event %></h2>
+<h2>Time:<%= @record.time %></h2>
+<h2>Year:<%= @record.year %></h2>
+
+<form action="/records/<%= @record.id %>/edit" method="post">
+  <input type="hidden" name="_method" value="get">
+  <% if @record.user && @record.user.id == current_user.id %>
+  <button type="submit">Edit Record</button>
+<%end %>
+</form>
 <form action="/records/<%= @record.id %>" method="post">
-  <input type="hidden" name"_time" value="delete">
-  <%= if @record.user == current_user %>
+  <input type="hidden" name="_method" value="delete">
+  <% if @record.user && @record.user.id == current_user.id %>
   <button type="submit">Delete Record</button>
-  <% end %>
+<%end %>
 </form>

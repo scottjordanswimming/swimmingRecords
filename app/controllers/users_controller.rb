@@ -8,12 +8,12 @@ get "/signup" do
 end
 
 post '/signup' do
-  #users should not be able to create an account with any black creds
+  #users should not be able to create an account with any blank creds
   #users should not be able to create an account with a username that already exists
 
-  user = User.new(params)
+  user = User.new(username: params["username"], password: params["password"])
   if user.username.empty? || user.password.empty?
-    @error = "Username and password can't be black. Please enter valid credentials"
+    @error = "Username and password can't be blank. Please enter valid credentials"
     erb :'users/signup'
   elsif User.find_by(username: user.username)
     @error = "Account with that username already exists"

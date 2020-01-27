@@ -17,8 +17,15 @@
     <div>
       <div><a href="/">Home</a></div>
       <div><a href="/records">Records</a></div>
-      <div><a href="/logout">Log Out</a></div>
 
+      <% if !logged_in? %>
+      <div><a href="/login">Log In</a></div>
+      <div><a href="/signup">Don't have an account? Click here to sign up.</a></div>
+<%end%>
+
+      <% if logged_in? %>
+      <div><a href="/logout">Log Out</a></div>
+<%end%>
 
       </div>
     <div class="wrapper">

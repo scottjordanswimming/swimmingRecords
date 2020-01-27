@@ -1,12 +1,14 @@
 <h1>Edit record for <%= @record.swimmer %></h1>
 #<p><%= @error %></p>
 <form action="/records/<%= @record.id %>" method="post">
-  <input type="hidden" name="_swimmer" value="patch">
+  <input type="hidden" name="_method" value="patch">
   <label>Swimmer</label>
   <input type="text" name="swimmer" value="<%= @record.swimmer %>">
   <label>Time</label>
   <input type="text" name="time" value="<%= @record.time %>">
   <label>Event</label>
   <input type="text" name="event" value="<%= @record.event %>">
+  <label>Year</label>
+  <input type="date" name="year" value="<%= @record.year %>">
   <button type="submit">Edit Record</button>
   </form>

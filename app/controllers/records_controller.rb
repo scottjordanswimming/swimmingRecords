@@ -1,6 +1,9 @@
 
 class RecordsController < ApplicationController
 
+# before do
+#   require_login
+# end
   #Create
     #New
       #make a get request to '/records'
@@ -10,7 +13,7 @@ class RecordsController < ApplicationController
     end
 
 post '/records' do
-  record = Record.new(params)
+  record = current_user.records.build(params)
   if record.save
 redirect '/records'
   else
@@ -61,15 +64,16 @@ end
     #Update
       #make a put request to '/records/:id'
 patch '/records/:id' do
-  record = Reccord.find(params[:id])
-  if !record.swimmer.empty? && !record.time.empty?
-    record.update
-redirect '/records'
-  else
-    @error = "Data invalid. Please try again."
-erb :'/records/new'
-end
-  record.update(swimmer: params["swimmer"], time: params["time"], event: params["event"])
+record = Record.find(params[:id])
+  #if !record.swimmer.empty? && !record.time.empty?
+#     record.update
+# redirect '/records'
+#   else
+#     @error = "Data invalid. Please try again."
+# erb :'/records/new'
+# end
+  record.update(swimmer: params["swimmer"], event: params["event"], time: params["time"], year: params["year"] )
+  redirect '/records/:id'
 
 end
   #Destroy

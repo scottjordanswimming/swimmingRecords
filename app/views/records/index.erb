@@ -1,10 +1,12 @@
 
 <h1>Records</h1>
-<a href="/records/new">Create a Record</a>
-<% @records.each do |record| %>
-<h2><a href="/records/<%= record.id%>"><%= record.swimmer %></a> </h2>
-<p><%= record.time %></p>
-
-<a href="/records/ <%= record.id %> /edit">Edit</a>
-
+<button onclick="window.location.href = '/records/new';">Create a New Record</button>
+<br></br>
+<br></br>
+<%  @records.each do |record| %>
+<h3><a href="/records/<%= record.id%>">Swimmer:<%= record.swimmer %><br></br>Event: <%= record.event %><br></br>Time: <%= record.time %><br></br>Year: <%= record.year %></a> </h3>
+ <% if record.user && session[:user_id] == record.user.id %>
+<button onclick="window.location.href = '/records/ <%= record.id %> /edit';">Click Here to Edit this Record</button>
+<br></br>
+<% end %>
 <% end %>

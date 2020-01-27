@@ -1,1 +1,0 @@
-Record.destroy_all

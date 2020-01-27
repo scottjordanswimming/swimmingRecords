@@ -1,3 +1,4 @@
 class User < ActiveRecord::Base
-  has_many :records 
+  #validates_presence_of :username, :password
+  has_many :records
 end
